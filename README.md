@@ -14,11 +14,11 @@ Code Requirement. Your implementation should encompass the following coding elem
     
   Data structures for storing game status:
     Each role has its own unique status stored in a struct. We will have an array of structs to store status of different roles so each role can be identified by an index in the array.
-    For each struct, there will be a string storing the role's name and race or occupation, bool to store death or debuff status, int or double to store hp(health point), mp(stamina), postion, maxvelocity(the maximum displacement in each round), visibility, basic attack range, basic attack rate, mechanical attack, mechanical defence, thermal attack, thermal defence, biological attack, biological defence, etc. The position will be in int for discrete grid in the map, but maxvelocity, range and visibility will be in double so as to calculate the distance more accurately. There will also be an uniques function for each role's skill, with its discription and cd(cooldown time).
+    For each struct, there will be a string storing the role's name and race or occupation, bool to store death or debuff status, int or double to store hp(health point), mp(stamina), postion, maxvelocity(the maximum displacement in each round), visibility, basic attack range, basic attack rate, mechanical attack, mechanical defence, thermal attack, thermal defence, biological attack, biological defence, hit probability, crit probability, etc. The position will be in int for discrete grid in the map, but maxvelocity, range and visibility will be in double so as to calculate the distance more accurately. There will also be an uniques function for each role's skill, with its discription and cd(cooldown time).
   Dynamic memory management:
   
   File input/output (e.g., for loading/saving game status):
   
   Program codes in multiple files:
   There will be text files to store descriptions of each character, each character's skill.
-  There will be files to display the map grid and each character's instant status.
+  There will be files to display the map grid simultaneously and each character's instant status.
