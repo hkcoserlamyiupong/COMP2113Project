@@ -1,6 +1,8 @@
 # COMP2113Project
 text based game
 A brief identification of the team members:
+I am Lam Yiu Pong. My uid is 3035691248.
+My teammate is Fu Wing Ho.
 
 A game description with basic game rules:
   This game will be a 1vs1 battle game among roles (to avoid ambiguity, the 角色s in the game will be named 'roles' instead of 'characters' which is a well defined data type). At first, the player draws some roles and choose them into the team. Then during the battle, the chosen roles in the team will be generated on a map with rectangular coordinates. Each map will have two zones for roles of both sides to be generated and a neutral zone betwen them. Both sides take turns to give one command. For each turn, one may displace one of his or her roles and use skills or normal attacks. One will lose when all of the roles die.
@@ -18,7 +20,9 @@ Code Requirement. Your implementation should encompass the following coding elem
   Dynamic memory management:
   
   File input/output (e.g., for loading/saving game status):
+  There will be text files to store descriptions of each character, each character's skill.
+  There will be files to display the map grid simultaneously and each character's instant status for each turn.
   
   Program codes in multiple files:
-  There will be text files to store descriptions of each character, each character's skill.
-  There will be files to display the map grid simultaneously and each character's instant status.
+  There will be header files to declare various functions separately. These header files will be #include<>d in the main .cpp program.
+  e.g. drawcard.h, displaymap.h, etc.
