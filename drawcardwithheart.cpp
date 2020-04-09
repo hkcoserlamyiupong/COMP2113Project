@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "drawcardwithheart.h"
 using namespace std;
-//draw card with diamond function
+//draw card with heart function
 int drawcardwithheart(int &heart){
   srand(time(NULL));
   heart-=5;
