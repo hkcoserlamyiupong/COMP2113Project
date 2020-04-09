@@ -6,6 +6,6 @@ using namespace std;
 //draw card with heart function
 int drawcardwithheart(int &heart){
   srand(time(NULL));
-  heart-=5;
+  heart-=10;
   return rand()%10+10;//number of low quality roles, number of high quality roles
 }
