@@ -5,10 +5,17 @@
 #include "role.h"
 using namespace std;
 int main(){
+  int diamond=25;
+  int heart=50;
+  string command;
   info role[20];
   for (int i = 0; i < 20; i++){
+    role[i].number=i;
+  }
+  role[].skill(role);
+  while (command!='quit'){
+    cin>>command;//user type a command//
 
   }
-  role[].skill();
   return 0;
 }
