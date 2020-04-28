@@ -30,6 +30,7 @@ void info::skill(info role[]){
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true){
           distance=abs((y-(*y1)*monster[i].x+(*x1-x)*monster[i].y-(*x1)*y+x*(*y1))/sqrt((y-(*y1))*(y-(*y1))+(*x1-x)*(*x1-x));
+          //a monster is considered to be passed through if the perpendicular distance from the monster to the straight line the role travels is less than 1//
           if (distance<1){
             int *dhdt = new int (400-monster[i].md);
             cout<<"mechanical damage dealt "<<*dhdt<<endl;
@@ -52,7 +53,7 @@ void info::skill(info role[]){
       cin>>target;
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true&&monster[i].name==target){
-          int *dhdt = new int ((100-monster[i].md)*16);
+          int *dhdt = new int ((100-monster[i].md)*16);//the value of mob's mechanical defence will be deducted to give the damage for each hit//
           cout<<"mechanical damage dealt "<<*dhdt<<endl;
           monster[i].hp-=*dhdt;
           delete dhdt;
@@ -77,6 +78,23 @@ void info::skill(info role[]){
       valid=0;
       break;
     case '2':
+      cout<<"slash every enemy within a distance of 3 at the stage with the katana"<<endl;
+      for (int i = 0; i < 5; i++){
+        if (monster[i].present==true){
+          double *distance = new double;
+          *distance=sqrt((x-monster[i].x)*(x-monster[i].x)+(y-monster[i].y)*(y-monster[i].y));
+          if (*distance <=3.0){
+            int *dhdt = new int (300-monster[i].md);
+            cout<<"mechanical damage dealt "<<*dhdt<<endl;
+            monster[i].hp-=*dhdt;
+            delete dhdt;
+            dhdt=0;
+          }
+          delete distance;
+          distance=0;
+        }
+      }
+      break;
     case '3':
     case '4':
     case '5':
