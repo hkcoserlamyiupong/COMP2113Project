@@ -2,6 +2,7 @@
 #include <iostream>
 #include "role.h"
 #include <cmath>
+#include <string>
 using namespace std;
 void info::skill(info role[]){
   cout<<skillname<<endl;
@@ -45,9 +46,35 @@ void info::skill(info role[]){
       break;
     case '1':
       cout<<"attack a single enemy 16 hits with dual blades"<<endl;
-      int target;
+      string target;
+      bool *valid=new bool(false);
       cout<<"please enter a target"<<endl;
       cin>>target;
+      for (int i = 0; i < 5; i++){
+        if (monster[i].present==true&&monster[i].name==target){
+          int *dhdt = new int ((100-monster[i].md)*16);
+          cout<<"mechanical damage dealt "<<*dhdt<<endl;
+          monster[i].hp-=*dhdt;
+          delete dhdt;
+          dhdt=0;
+          *valid=true;
+        }
+      }
+      while (*valid==false){
+        cout<<"invalid targetr input"<<endl;
+        for (int i = 0; i < 5; i++){
+          if (monster[i].present==true&&monster[i].name==target){
+            int *dhdt = new int ((100-monster[i].md)*16);
+            cout<<"mechanical damage dealt "<<*dhdt<<endl;
+            monster[i].hp-=*dhdt;
+            delete dhdt;
+            dhdt=0;
+            *valid=true;
+          }
+        }
+      }
+      delete valid;
+      valid=0;
       break;
     case '2':
     case '3':
