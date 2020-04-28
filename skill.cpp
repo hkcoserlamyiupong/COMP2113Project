@@ -20,7 +20,12 @@ void info::skill(info role[]){
       distance=sqrt((*i-x)*(*i-x)+(*j-y)*(*j-y));
       while (distance>5.0){
         cout<<"too far";
-
+        cin>>x;
+        cin>>y;
+        distance=sqrt((*i-x)*(*i-x)+(*j-y)*(*j-y));
+      }
+      for (int i = 0; i < 5; i++){
+        if (monster[i].)
       }
       break;
     case '1':

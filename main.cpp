@@ -1,5 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+#include <fstream>
+#include <string>
+#include <cmath>
 #include "drawcardwithdiamond.h"
 #include "drawcardwithheart.h"
 #include "role.h"
@@ -7,19 +10,43 @@ using namespace std;
 int main(){
   int diamond=25;
   int heart=50;
-  string command;
-
   info role[20];
+  ifstream fin("roleinfo.txt");
+  monsterinfo monster[5];
+  //to intialize role stats//
   for (int i = 0; i < 20; i++){
     role[i].number=i;
+    fin>>role[i].name>>role[i].skillname>>role[i].maxcd>>role[i].maxhp>>role[i].md>>role[i].ed>>role[i].bd>>role[i].maxvelocity;
+    role[i].cd=role[i].maxcd;
+    role[i].hp=role[i].maxhp;
+    role[i].own=false;
+    role[i].dead=false;
+    role[i].infected=false;
+    role[i].ignited=false;
   }
+  //to initialize mob stats//
+  for (int i = 0; i<5;i++){
+    monster[i].number=i;
+    fin>>monster[i].name>>monster[i].maxhp>>monster[i].md>>monster[i].ed>>monster[i].bd>>monster[i].maxvelocity;
+    monster[i].hp=monster[i].maxhp;
+    monster[i].present=false;
+    monster[i].dead=false;
+    monster[i].revive=false;
+    monster[i].ignited=false;
+  }
+  string command;
   role[].skill(role);
   while (command!='quit'){
     cin>>command;//user type a command//
     switch (command){
       case 'drawcardwithdiamond':
-        role[drawcardwithdiamond(diamond)].own=true;
-        break;
+        if (diamond>=5){
+          role[drawcardwithdiamond(diamond)].own=true;
+          break;
+        }
+        else {
+          cout<<"not enough diamonds"<<endl;
+        }
       case 'quit':
         break;
       default:

@@ -17,10 +17,10 @@ struct info {
   double maxvelocity;//maximum displacement in a round//
   int x;
   int y;
-  bool own;
+  bool own;//indicate the player owns the role
   bool dead;
-  bool revive;
   bool infected;
+  bool ignited;
 };
 struct monsterinfo {
   int number;//index of mobs//
@@ -31,5 +31,9 @@ struct monsterinfo {
   int ed;//electrical defence//
   int bd;//biological defence//
   double maxvelocity;//maximum displacement of mobs in a round//
+  bool present;//indicate the mob is present in that stage
+  bool dead;
+  bool revive;
+  bool ignited;
 };
 #endif
