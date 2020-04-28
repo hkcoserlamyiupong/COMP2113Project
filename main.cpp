@@ -4,7 +4,7 @@
 #include <string>
 #include <cmath>
 #include "drawcardwithdiamond.h"
-#include "drawcardwithheart.h"
+#include "displaymap.h"
 #include "role.h"
 using namespace std;
 int main(){
@@ -34,6 +34,7 @@ int main(){
     monster[i].revive=false;
     monster[i].ignited=false;
   }
+  fin.close();
   string command;
   role[].skill(role);
   while (command!='quit'){
@@ -47,10 +48,13 @@ int main(){
         else {
           cout<<"not enough diamonds"<<endl;
         }
+      case 'play':
+        int stage=1;
+
       case 'quit':
         break;
       default:
-        cout<<"invalid input";
+        cout<<"invalid input"<<endl;
     }
   }
   return 0;
