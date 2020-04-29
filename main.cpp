@@ -4,12 +4,11 @@
 #include <string>
 #include <cmath>
 #include "drawcardwithdiamond.h"
-#include "displaymap.h"
+#include "play.h"
 #include "role.h"
 using namespace std;
 int main(){
   int diamond=25;
-  int heart=50;
   info role[20];
   ifstream fin("roleinfo.txt");
   monsterinfo monster[5];
@@ -23,6 +22,7 @@ int main(){
     role[i].dead=false;
     role[i].infected=false;
     role[i].ignited=false;
+    role[i].radiation=0.0;
   }
   //to initialize mob stats//
   for (int i = 0; i<5;i++){
@@ -33,10 +33,12 @@ int main(){
     monster[i].dead=false;
     monster[i].revive=false;
     monster[i].ignited=false;
+    monster[i].shocked=false;
+    monster[i].radiation=0.0;
   }
   fin.close();
   string command;
-  role[].skill(role);
+  role[].skill(role, monster);
   while (command!='quit'){
     cin>>command;//user type a command//
     switch (command){
@@ -49,8 +51,7 @@ int main(){
           cout<<"not enough diamonds"<<endl;
         }
       case 'play':
-        int stage=1;
-
+        void(role, monster);
       case 'quit':
         break;
       default:

@@ -1,4 +1,5 @@
 //role.h
+#include <string>
 #ifndef skill
 #define skill
 struct info {
@@ -7,7 +8,7 @@ struct info {
   string skillname;//name of skill//
   int cd;//current cool down time//
   int maxcd;//cool down time//
-  void skill(info []);
+  void skill(info [], monsterinfo []);
   void move();
   int hp;//current health point//
   int maxhp;//health point//
@@ -21,6 +22,7 @@ struct info {
   bool dead;
   bool infected;
   bool ignited;
+  double radiation;
 };
 struct monsterinfo {
   int number;//index of mobs//
@@ -35,5 +37,7 @@ struct monsterinfo {
   bool dead;
   bool revive;
   bool ignited;
+  bool shocked;
+  double radiation;
 };
 #endif

@@ -5,7 +5,7 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
-void info::skill(info role[], monsterinfo monster[],int t){
+void info::skill(info role[], monsterinfo monster[]){
   cout<<skillname<<endl;
   cd=maxcd;
   switch(number){
