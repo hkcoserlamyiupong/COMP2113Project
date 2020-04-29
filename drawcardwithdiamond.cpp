@@ -5,7 +5,7 @@
 using namespace std;
 //draw card with diamond function
 int drawcardwithdiamond(int &diamond){
-  srand(time(NULL))
+  srand(time(NULL));
   diamond-=5;
   return rand()%10;//number of high quality roles
 }
