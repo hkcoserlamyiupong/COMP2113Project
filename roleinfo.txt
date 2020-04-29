@@ -2,11 +2,11 @@ tan0 sannokataryuryumaii 4 1000 50 30 10 4.5
 kirito starburststream 4 900 50 30 10 5.5
 sorakawish 5 600 7 15 10 3.5
 masteryi alphastrike 3 800 40 30 15 5.5
-einstein atomicbomb 10 100 10 10 0 1.0
-ahacker hack 15 100 10 10 0 1.0
-shinon snipe 3 600 30 0 0 3.5
-pikachu static 3 450 0 10000 0 3.5
-haber chlorinegas 4 100 10 0 0 1.0
+einstein atomicbomb 10 100 10 10 1 1.0
+ahacker hack 15 100 10 10 1 1.0
+shinon snipe 3 600 30 0 1 3.5
+pikachu static 3 450 0 10000 1 3.5
+haber chlorinegas 4 100 10 0 1 1.0
 leon shotgun 3 800 50 20 50 4.0
 goblin 100 30 10 1 1.0
 orc 200 40 10 10 1.0
