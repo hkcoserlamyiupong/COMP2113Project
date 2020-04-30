@@ -8,6 +8,17 @@ shinon snipe 3 600 30 1 1 3.5
 pikachu static 3 450 1 10000 1 3.5
 haber chlorinegas 4 100 10 1 1 1.0
 leon shotgun 3 800 50 20 50 4.0
+Son-Goku KameHameHa 4 900 40 30 30 4.0
+Sona AriaOfPerseverance 4 600 20 30 30 3.5
+ShieldMan Shield 3 1200 50 40 20 2.5
+OnePunchMan NormalPunch 3 700 40 40 40 4.0
+LuBu ThreeManFightLuBu 2 1000 50 20 20 5.0
+Naruto Rasengan 3 700 40 40 30 4.0
+Odin BlessingFromGodOfWar 2 700 40 20 40 3.5
+Horus SpaceControl 4 500 20 50 30 50.0
+Archer Shotting 1 60 30 30 30 4.0
+Vampire Transfusion 3 900 10 30 30 2.5
+
 goblin 100 30 10 1 1.0
 orc 200 40 10 10 1.0
 skeleton 100 20 20 10000 1.0
