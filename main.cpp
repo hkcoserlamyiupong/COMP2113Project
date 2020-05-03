@@ -41,8 +41,7 @@ int main(){
   role[].skill(role, monster);
   while (command!="quit"){
     cin>>command;//user type a command//
-    switch (command){
-      case "drawcardwithdiamond":
+      if (command=="drawcardwithdiamond"){
         if (diamond>=5){
           role[drawcardwithdiamond(diamond)].own=true;
           break;
@@ -50,13 +49,13 @@ int main(){
         else {
           cout<<"not enough diamonds"<<endl;
         }
-      case "play":
+      }else if (command=="play"){
         void(role, monster);
-      case "quit":
+      }else if (command=="quit"){
         break;
-      default:
-        cout<<"invalid input"<<endl;
-    }
+      }else{
+          cout<<"invalid input"<<endl;
+      }
   }
   return 0;
 }
