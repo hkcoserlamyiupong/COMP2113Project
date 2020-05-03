@@ -50,9 +50,9 @@ int main(){
         else {
           cout<<"not enough diamonds"<<endl;
         }
-      case 'play':
+      case "play":
         void(role, monster);
-      case 'quit':
+      case "quit":
         break;
       default:
         cout<<"invalid input"<<endl;
