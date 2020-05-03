@@ -39,7 +39,7 @@ int main(){
   fin.close();
   string command;
   role[].skill(role, monster);
-  while (command!='quit'){
+  while (command!="quit"){
     cin>>command;//user type a command//
     switch (command){
       case 'drawcardwithdiamond':
