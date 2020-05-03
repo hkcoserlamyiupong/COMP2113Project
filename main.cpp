@@ -42,7 +42,7 @@ int main(){
   while (command!="quit"){
     cin>>command;//user type a command//
     switch (command){
-      case 'drawcardwithdiamond':
+      case "drawcardwithdiamond":
         if (diamond>=5){
           role[drawcardwithdiamond(diamond)].own=true;
           break;
