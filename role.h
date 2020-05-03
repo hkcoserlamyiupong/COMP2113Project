@@ -2,6 +2,7 @@
 #include <string>
 #ifndef skill
 #define skill
+using namespace std;
 struct info {
   int number;//index of role//
   string name;//name of role//
