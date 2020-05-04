@@ -23,7 +23,7 @@ void play(info role[], monsterinfo monster[]){
   srand(time(NULL));
   int map=rand()%4;//4 random maps, including hell, comp lab, phy lab and chem lab are featured//
   while (end==false){
-    if (monster[0].dead=true){
+    if (monster[0].dead==true){
       cout<<"stage 1 cleared"<<endl;
       stage++;
       cout<<"stage 2, a skeleton, which can revive once"<<endl;
