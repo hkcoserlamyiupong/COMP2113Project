@@ -9,7 +9,7 @@
 using namespace std;
 int main(){
   int diamond=25;
-  info role[20];
+  struct info role[20];
   ifstream fin("roleinfo.txt");
   monsterinfo monster[5];
   //to intialize role stats//
