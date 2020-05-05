@@ -6,6 +6,7 @@
 #include "drawcardwithdiamond.h"
 #include "play.h"
 #include "role.h"
+#include "map.h"
 using namespace std;
 int main(){
   int diamond=25;
@@ -23,6 +24,7 @@ int main(){
     role[i].infected=false;
     role[i].ignited=false;
     role[i].radiation=0.0;
+    role[i].occupy=0;
   }
   //to initialize mob stats//
   for (int i = 0; i<5;i++){
@@ -38,7 +40,6 @@ int main(){
   }
   fin.close();
   string command;
-  role[].skill(role, monster);
   while (command!="quit"){
     cin>>command;//user type a command//
       if (command=="drawcardwithdiamond"){
@@ -50,7 +51,16 @@ int main(){
           cout<<"not enough diamonds"<<endl;
         }
       }else if (command=="play"){
-        void(role, monster);
+        info team[5];//team is an array of roles drawn to be summoned for the game and the maximum roles that can be drawn is 5//
+        int j = 0;
+        for (int i = 0; i < 10; i++){
+          if (role[i].own==true){
+            team[j]=role[i]
+            j++;
+          }
+        }//team[i]where i belongs to{0,1,2,3,4}can be used to refer to roles for the game
+        int stage=1;//a variable indicating the level of the game//
+        void play(team, monster, stage, role);
       }else if (command=="quit"){
         break;
       }else{

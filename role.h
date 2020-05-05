@@ -24,6 +24,8 @@ struct info {
   bool infected;
   bool ignited;
   double radiation;
+  int occupy;//indicate the time of occupying the computer in computer lab
+  int ignitedt;//initial time of combustion
 };
 struct monsterinfo {
   int number;//index of mobs//
@@ -40,5 +42,6 @@ struct monsterinfo {
   bool ignited;
   bool shocked;
   double radiation;
+  int ignitedt;//initial time of combustion
 };
 #endif
