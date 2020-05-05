@@ -227,8 +227,13 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
         cin>>k;
         if (k>=0&&k<=4){
           if (team[k].dead=false){
-            team[k].skill(role, monster);
-            valid=true;
+            if (team[k].cd=0){
+              team[k].skill(role, monster);
+              valid=true;
+            }
+            else {
+              cout<<"cooldown time left="<<team[k].cd<<", please enter again"<<endl;
+            }
           }
           else {
             cout<<"team member dead, please enter again"<<endl;
@@ -260,6 +265,11 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       }
     }
     map(team, monster, m, map);
+    for (int i = 0; i < 5; i++){
+      if (team[i].dead==false&&team[i].cd>0){
+        team[i].cd--;
+      }
+    }
     t++;//time increment of 1s each round
   }
 }
