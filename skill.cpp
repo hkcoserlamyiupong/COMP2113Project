@@ -171,7 +171,8 @@ void info::skill(info role[], monsterinfo monster[]){
       cin>>target;
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true&&monster[i].name==target){
-          int *dhdt = new int (800-monster[i].md);
+          int headshot=rand()%2+1;//50%chance of headshot with double attack
+          int *dhdt = new int (headshot*800-monster[i].md);
           cout<<"mechanical damage dealt to"<<monster[i].name<<*dhdt<<endl;
           monster[i].hp-=*dhdt;
           delete dhdt;
