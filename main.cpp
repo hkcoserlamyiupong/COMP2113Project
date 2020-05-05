@@ -53,7 +53,7 @@ int main(){
       }else if (command=="play"){
         info team[5];//team is an array of roles drawn to be summoned for the game and the maximum roles that can be drawn is 5//
         int j = 0;
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 20; i++){
           if (role[i].own==true){
             team[j]=role[i]
             j++;
