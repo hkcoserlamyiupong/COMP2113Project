@@ -10,7 +10,7 @@ void info::skill(info role[], monsterinfo monster[]){
   cd=maxcd;
   switch(number){
     case '0':
-      cout<<"travel within a distance of 5 and attack enemies physically on the path"<<endl;
+      cout<<"travel within a displacement of 5 and attack enemies physically on the path"<<endl;
       cout<<"please enter coordinates of destination"<<endl;
       int x1 = x;
       int y1 = y;
@@ -19,14 +19,23 @@ void info::skill(info role[], monsterinfo monster[]){
       int * y1 = new int;
       *y1 = y1;
       double distance;
-      cin>>x;
-      cin>>y;
-      distance=sqrt((*x1-x)*(*x1-x)+(*y1-y)*(*y1-y));//distance the role travels//
-      while (distance>5.0){
-        cout<<"too far"<<endl;
+      bool valid=false;
+      while (valid==false){
         cin>>x;
         cin>>y;
-        distance=sqrt((*x1-x)*(*x1-x)+(*y1-y)*(*y1-y));
+        if (x>=0&&x<=4&&y>=0&&y<=9){
+          double distance;
+          distance=sqrt((*x1-x)*(*x1-x)+(*y1-y)*(*y1-y));//distance the role travels//
+          if (distance<=5.0){
+            valid=true;
+          }
+          else {
+            cout<<"too far, please enter again"<<endl;
+          }
+        }
+        else {
+          cout<<"out of range, please enter again"<<endl;
+        }
       }
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true){
@@ -45,6 +54,8 @@ void info::skill(info role[], monsterinfo monster[]){
       *y1=new int;
       delete x1;
       delete y1;
+      x1=0;
+      y1=0;
       break;
     case '1':
       cout<<"attack a single enemy 16 hits with dual blades"<<endl;
