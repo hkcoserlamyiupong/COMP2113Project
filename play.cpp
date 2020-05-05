@@ -14,9 +14,13 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
     team[i].ignited=false;
     team[i].radiation=0.0;
     team[i].occupy=0;
+    if (team[i].dead==false){
+      team[i].x=i;
+      team[i].y=0;
+    }
   }
   switch (stage){
-    case '1':
+    case 1:
       cout<<"stage 1, a goblin"<<endl;
       monster[0].present=true;
       monster[0].hp=monster[0].maxhp;
@@ -28,7 +32,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       monster[0].y=9;
       monster[0].revive=false;
       break;
-    case '2':
+    case 2:
       cout<<"stage 2, a skeleton, which can revive once and may appear anywhere on the map initially"<<endl;
       monster[2].present=true;
       monster[2].hp=monster[2].maxhp;
@@ -40,7 +44,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       monster[2].y=rand()%9;
       monster[2].revive=true;
       break;
-    case '3':
+    case 3:
       cout<<"stage 3, a goblin, an orc and a skeleton"<<endl;
       for (int i = 0;i <= 2;i++){
         monster[i].present=true;
@@ -55,7 +59,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       }
       monster[2].revive=true;
       break;
-    case '4':
+    case 4:
       cout<<"stage 4, a teargaspopo with 2 modes of attack"<<endl;
       monster[3].present=true;
       monster[3].hp=monster[3].maxhp;
@@ -67,7 +71,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       monster[3].y=9;
       monster[3].revive=false;
       break;
-    case '5':
+    case 5:
       cout<<"stage 5, a tanky baron"<<endl;
       monster[4].present=true;
       monster[4].hp=monster[4].maxhp;
@@ -83,19 +87,19 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
   bool end=false;//a boolean variable indicating the end of game//
   int map=rand()%4;//4 random maps, including hell, comp lab, phy lab and chem lab are featured//
   switch (map){
-    case '0':
+    case 0:
       cout<<"hell map"<<endl;
       cout<<"combustion of all roles and mobs in this map"<<endl;
       break;
-    case '1':
+    case 1:
       cout<<"physics lab"<<endl;
       cout<<"radioactive uranium emitting gamma ray at the centre of this map"<<endl;
       break;
-    case '2':
+    case 2:
       cout<<"chemistry lab"<<endl;
       cout<<"random items like bunsen burners and heatproof mats are available"<<endl;
       break;
-    case '3':
+    case 3:
       cout<<"computer lab"<<endl;
       cout<<"any role staying at the computer at (2,4)for 20 consecutive rounds may hack the game and pass the stage directly"<<endl;
       break;
@@ -111,7 +115,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       cout<<"victory"<<endl;
       end=true;
     }
-    else if(monster[0].dead==true&&monster[1].dead==true&&monster[2].dead==true&&monster[3].dead==true&&monster[4].dead==true&&monster[2].revive=false){
+    else if(monster[0].dead==true&&monster[1].dead==true&&monster[2].dead==true&&monster[3].dead==true&&monster[4].dead==true&&monster[2].revive==false){
       for (int i = 0; i < 5; i++){
         monster[i].present=false;
       }
@@ -226,8 +230,8 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       while (valid==false){
         cin>>k;
         if (k>=0&&k<=4){
-          if (team[k].dead=false){
-            if (team[k].cd=0){
+          if (team[k].dead==false){
+            if (team[k].cd==0){
               team[k].skill(role, monster);
               valid=true;
             }
@@ -251,7 +255,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       while (valid==false){
         cin>>k;
         if (k>=0&&k<=4){
-          if (team[k].dead=false){
+          if (team[k].dead==false){
             team[k].move();
             valid=true;
           }
@@ -263,6 +267,181 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
           cout<<"invalid input, please enter again"<<endl;
         }
       }
+    }
+    //monsters' turn
+    switch (stage){
+      case 1:
+        //goblin attacks 1 role within distance of 1 nearby or move within distance of sqrt(2)
+        if (monster[0].shocked==false&&monster[0].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              double distance=sqrt((team[i].x-monster[0].x)*(team[i].x-monster[0].x)+(team[i].y-monster[0].y)*(team[i].y-monster[0].y));
+              if (distance <= 1){
+                team[i].hp-=100-team[i].md;
+                break;
+              }
+            }
+          }
+          int randomdisplacement=rand()%3-1;
+          if (monster[0].x>=1&&monster[0].x<=3){
+            monster[0].x+=randomdisplacement;
+          }
+          if (monster[0].y>=1&&monster[0].y<=8){
+            monster[0].y-=randomdisplacement;
+          }
+        }
+        else if (monster[0].shocked==true&&monster[0].dead==false){
+          monster[0].shocked=false;
+        }
+        break;
+      case 2:
+        //skeleton beats roles with his electrical baton within distance of 1 nearby, move within distance of sqrt(2) and revive once
+        if (monster[2].dead==true&&monster[2].revive==true){
+          monster[2].dead=false;
+          monster[2].hp=monster[2].maxhp;
+          monster[2].revive=false;
+        }
+        else if (monster[2].shocked==false&&monster[2].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              double distance=sqrt((team[i].x-monster[2].x)*(team[i].x-monster[2].x)+(team[i].y-monster[2].y)*(team[i].y-monster[2].y));
+              if (distance <= 1){
+                team[i].hp-=400-team[i].md-team[i].ed;
+              }
+            }
+          }
+          int randomdisplacement=rand()%3-1;
+          if (monster[2].x>=1&&monster[2].x<=3){
+            monster[2].x+=randomdisplacement;
+          }
+          if (monster[2].y>=1&&monster[2].y<=8){
+            monster[2].y-=randomdisplacement;
+          }
+        }
+        else if (monster[2].shocked==true&&monster[2].dead==false){
+          monster[2].shocked=false;
+        }
+        break;
+      case 3:
+        //3 little mobs allign, where goblin and skeleton are as stages before and orc smashes roles on the same grid and move within distance of sqrt (2)
+        if (monster[0].shocked==false&&monster[0].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              double distance=sqrt((team[i].x-monster[0].x)*(team[i].x-monster[0].x)+(team[i].y-monster[0].y)*(team[i].y-monster[0].y));
+              if (distance <= 1){
+                team[i].hp-=100-team[i].md;
+                break;
+              }
+            }
+          }
+          int randomdisplacement=rand()%3-1;
+          if (monster[0].x>=1&&monster[0].x<=3){
+            monster[0].x+=randomdisplacement;
+          }
+          if (monster[0].y>=1&&monster[0].y<=8){
+            monster[0].y-=randomdisplacement;
+          }
+        }
+        else if (monster[0].shocked==true&&monster[0].dead==false){
+          monster[0].shocked=false;
+        }
+        if (monster[1].shocked==false&&monster[1].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              if (team[i].x==monster[1].x&&team[i].y==monster[1].y){
+                team[i].hp-=300-team[i].md;
+                break;
+              }
+            }
+          }
+          int randomdisplacement=rand()%3-1;
+          if (monster[1].x>=1&&monster[1].x<=3){
+            monster[1].x+=randomdisplacement;
+          }
+          if (monster[1].y>=1&&monster[1].y<=8){
+            monster[1].y-=randomdisplacement;
+          }
+        }
+        else if (monster[1].shocked==true&&monster[1].dead==false){
+          monster[1].shocked=false;
+        }
+        if (monster[2].dead==true&&monster[2].revive==true){
+          monster[2].dead=false;
+          monster[2].hp=monster[2].maxhp;
+          monster[2].revive=false;
+        }
+        else if (monster[2].shocked==false&&monster[2].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              double distance=sqrt((team[i].x-monster[2].x)*(team[i].x-monster[2].x)+(team[i].y-monster[2].y)*(team[i].y-monster[2].y));
+              if (distance <= 1){
+                team[i].hp-=400-team[i].md-team[i].ed;
+              }
+            }
+          }
+          int randomdisplacement=rand()%3-1;
+          if (monster[2].x>=1&&monster[2].x<=3){
+            monster[2].x+=randomdisplacement;
+          }
+          if (monster[2].y>=1&&monster[2].y<=8){
+            monster[2].y-=randomdisplacement;
+          }
+        }
+        else if (monster[2].shocked==true&&monster[2].dead==false){
+          monster[2].shocked=false;
+        }
+        break;
+      case 4:
+        //unlike previous mobs, a tgpopo has two modes of attack, beating a role with baton within range of sqrt(2) and launching tear gas to a random location
+        //also, a tgpopo would straightly push his 'line of defence' towards the roles instead of performing Brownian motion like previous mobs
+        if (monster[3].shocked==false&&monster[3].dead==false){
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              double distance=sqrt((team[i].x-monster[3].x)*(team[i].x-monster[3].x)+(team[i].y-monster[3].y)*(team[i].y-monster[3].y));
+              if (distance <= sqrt(2)){
+                team[i].hp-=400-team[i].md;
+                break;
+              }
+            }
+          }
+          int x1 = rand()%5;
+          int y1 = rand()%10;
+          int * x1 = new int;
+          *x1 = x1;
+          int * y1 = new int;
+          *y1 = y1;
+          m[*x1][*y1]+="T";//tear gas
+          for (int i = 0; i < 5; i++){
+            if (team[i].dead==false){
+              if (team[i].x==*x1&&team[i].y==*y1){
+                int headshot=rand()%2+1;
+                //direct hit of tg deals mechanical damage
+                team[i].hp-=headshot*600-team[i].md;
+              }
+              //aoe dmg of tg
+              team[i].hp-=300/((team[i].x-*x1)*(team[i].x-*x1)+(team[i].y-*y1)*(team[i].y-*y1))-team[i].bd;
+            }
+          if (monster[3].y>0){
+            monster[3].y--;
+          }
+        }
+        else if (monster[3].shocked==true&&monster[3].dead==false){
+          monster[3].shocked=false;
+        }
+        break;
+      case 5:
+        //boss baron remains stationary instead of travelling like previous mobs
+        //however its defence and hp are very high and it has some recovery and defence boost for each turn as well
+        monster[4].md++;
+        monster[4].ed++;
+        monster[4].bd++;
+        if (monster[4].hp>=monster[4].maxhp-50){
+          monster[4].hp=monster[4].maxhp;
+        }
+        else {
+          monster[4].hp+=50;
+        }
+        break;
     }
     map(team, monster, m, map);
     for (int i = 0; i < 5; i++){
