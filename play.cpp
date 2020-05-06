@@ -1,13 +1,16 @@
 //play.cpp
 #include <iostream>
+#include <fstream>
 #include "role.h"
+#include "map.h"
+#include "stat.h"
 #include <cmath>
 #include <string>
 #include <cstdlib>
 using namespace std;
 void play(info team[], monsterinfo monster[], int& stage, info role[]){
   srand(time(NULL));
-  int t;//indicating the rounds in each match
+  int t=0;//indicating the rounds in each match
   string m[5][10];//2d array for the map with row the x-coordinate and column the y-coordinate(the transpose of the matrix is the map)
   string command;
   for (int i = 0; i < 5; i++){
@@ -444,6 +447,7 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
         break;
     }
     map(team, monster, m, map);
+    stat(team, monster, t);
     for (int i = 0; i < 5; i++){
       if (team[i].dead==false&&team[i].cd>0){
         team[i].cd--;

@@ -35,6 +35,8 @@ struct monsterinfo {
   int md;//mechanical defence//
   int ed;//electrical defence//
   int bd;//biological defence//
+  int x;
+  int y;
   double maxvelocity;//maximum displacement of mobs in a round//
   bool present;//indicate the mob is present in that stage
   bool dead;

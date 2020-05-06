@@ -5,6 +5,7 @@
 #include <cmath>
 #include <string>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 void map(info team[], monsterinfo monster[], string m[][], int map){
   srand(time(NULL));
@@ -43,11 +44,14 @@ void map(info team[], monsterinfo monster[], string m[][], int map){
   if (map==3){
     m[2][4]+="C";//computer
   }
+  ofstream fout;
+  fout.open("map.txt");
   m[rand()%5][rand()%10]+="+";//medkit
   for (int j = 9; j >=0; j--){
     for (int i = 0;i <= 4; i++){
-      cout<<m[i][j]<<"  ";
+      fout<<m[i][j]<<"  ";
     }
-    cout<<endl;
+    fout<<endl;
   }
+  fout.close();
 }
