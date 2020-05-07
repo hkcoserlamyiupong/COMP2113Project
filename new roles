@@ -1,0 +1,144 @@
+new roles
+//without 12,15,16,18,19
+
+case 10:
+            cout<<"Attack all enemies in one direction"<<endl;
+            cout<<"please enter a direction (up / down / left / right)"<<endl;
+            string d;
+            cin>>d;
+            bool valid=false;
+            while (not(valid)){
+                if (d=="up"){
+                    valid=true;
+                    for (int i=0;i<5;i++){
+                        if (role[number].x==monster[i].x && monster[i].y>role[number].y){
+                            monster[i].hp-= 450-monster[i].bd;
+                            cout<<"electriccal damage dealt to "<<monster[i].name<<450-monster[i].bd<<endl;
+                            }
+                        }
+                }else if (d=="down"){
+                    valid=true;
+                    for (int i=0;i<5;i++){
+                        if (role[number].x==monster[i].x && monster[i].y<role[number].y){
+                            monster[i].hp-= 450-monster[i].bd;
+                            cout<<"electriccal damage dealt to "<<monster[i].name<<450-monster[i].bd<<endl;
+                        }
+                    }
+                }else if (d=="left"){
+                    valid=true;
+                    for (int i=0;i<5;i++){
+                        if (role[number].y==monster[i].y && monster[i].x<role[number].x){
+                            monster[i].hp-= 450-monster[i].bd;
+                            cout<<"electriccal damage dealt to "<<monster[i].name<<450-monster[i].bd<<endl;
+                        }
+                    }
+                }else if (d=="right"){
+                    valid=true;
+                    for (int i=0;i<5;i++){
+                        if (role[number].y==monster[i].y && monster[i].x>role[number].x){
+                            monster[i].hp-= 450-monster[i].bd;
+                            cout<<"electriccal damage dealt to "<<monster[i].name<<450-monster[i].bd<<endl;
+                        }
+                    }
+                }else{
+                    cout<<"Invalid direction! Please enter again";
+                }
+            }
+            valid=false;
+            break;
+        case 11:
+            cout<<"Clear the negative status of a role and cool down of it -1"<<endl;
+            cout<<"Input the number of the role (0 to 4)"<<endl;
+            int i;
+            cin>>i;
+            if (i>=0&&i<=4){
+                role[i].ignited=false;
+                role[i].shock=false;
+                role[i].cd-2;
+                if (role[i].cd<0){
+                    role[i].cd=0;
+                }
+            }
+            valid=false;
+            break;
+        case 12:
+            cout<<"Make 500 mechanical damage to a enemy within 3 distance"<<endl;
+            cout<<"Input the enemy (0 to 4, -1 to skip the round)"<<endl;
+            int i;
+            valid=false;
+            while (not(valid)){
+                cin>>i;
+                if (i==-1){
+                    valid=true;
+                }else if (i>=0&&i<5){
+                    if (monster[i].present.true){
+                        if ((((monster[i].x-role[number].x)**2+(monster[i].y-role[number].y)**2)**0.5)<=3)){
+                            valid=true;
+                            monster[i].hp-=700-monster[i].md;
+                            cout<<700-monster[i].md<<"mechanical damage dealt to "<<monster[i].name<<endl;
+                        }else{
+                            cout<<"Too far! Please input again"<<endl;
+                    }else{
+                        cout<<"Invalid enemy! Please input again"<<endl;
+                    }
+                }else{
+                    cout<<"Invalid enemy! Please input again"<<endl;
+                }
+            }
+            break;
+        case 13:
+            cout<<"Attack at most 3 nearest enemies by total damage 600"<<endl;
+            cout<<"Input the number of enemies you want to attack"<<endl;
+            int n;
+            valid=false;
+            while (not(valid)){
+                cin>>n;
+                if (n<4&&n>0){
+                    valid=true;
+                    double *distance=new double [5];
+                    for (int i=0;i<5;i++){
+                        if (monster[i].present){ distance[i]=(((monster[i].x-role[number].x)**2+(monster[i].y-role[number].y)**2)**0.5);
+                        }
+                    }
+                    distance.sort(distance.begin(),distance.end());
+                    for (int k=0;k<n;k++){
+                        for (int i=0;i<5;i++){
+                            if ((((monster[i].x-role[number].x)**2+(monster[i].y-role[number].y)**2)**0.5)==distance[k]){
+                                monster[i].hp-=600%n-monster.[i].md;
+                                cout<<600%n-monster.[i].md<<" mechanical damage dealt to "<<monster[i].name;
+                            }
+                        }
+                    }
+                }else{
+                    cout<<"Invalid Inpput! Please Input again"<<endl;
+                }
+            }
+            break;
+        case 14:
+            cout<<"Teleport a enemy and make 250 damage"<<endl;
+            int i;
+            valid=false;
+            while (not(valid)){
+                cout<<"Inout the enemy (0 to 4)"<<endl;
+                cin>>i;
+                if (i>=0&&i<5){
+                    if (monster[i].present){
+                        cout<<"Input the location (x y)"<<endl;
+                        int x,y;
+                        cin>>x>>y;
+                        if (x>=0&&x<=4&&y>=0&&y>=4){
+                            valid=true;
+                            monster[i].x=x;
+                            monster[i].y=y;
+                            monster[i].hp-=250-monster[i].bd;
+                            cout<<250-monster[i].bd<<"biological damage dealt to "<<monster[i].name;
+                        }else{
+                            cout<<"Invalid location"<<endl;
+                            }
+                    }else{
+                        cout<<"Invalid enemy";
+                        }
+                }else{
+                    cout<<"Invalid enemy";
+                    }
+            }
