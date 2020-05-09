@@ -50,7 +50,11 @@ void mapmap(info team[], monsterinfo monster[], string m[][10], int map){
   m[rand()%5][rand()%10]+="+";//medkit
   for (int j = 9; j >=0; j--){
     for (int i = 0;i <= 4; i++){
-      fout<<m[i][j]<<"  ";
+      fout<<m[i][j];
+      if (m[i][j]==""){
+        fout<<"--";
+      }
+      fout<<"  ";
     }
     fout<<endl;
   }
