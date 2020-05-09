@@ -1,6 +1,7 @@
 //play.cpp
 #include <iostream>
 #include <fstream>
+#include <play.h>
 #include "role.h"
 #include "map.h"
 #include "stat.h"
