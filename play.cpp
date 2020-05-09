@@ -9,6 +9,7 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
+//game function
 void play(info team[], monsterinfo monster[], int& stage, info role[]){
   srand(time(NULL));
   int t=0;//indicating the rounds in each match

@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
+//function for using skills
 void info::skill(info role[], monsterinfo monster[]){
   cout<<skillname<<endl;
   cd=maxcd;

@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <fstream>
 using namespace std;
+//displays stats each round
 void stat(info team[], monsterinfo monster[], int t){
   ofstream fout;
   fout.open("stat.txt", ios::app);

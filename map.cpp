@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <fstream>
 using namespace std;
+//prints map for each round
 void mapmap(info team[], monsterinfo monster[], string m[][10], int map){
   srand(time(NULL));
   for (int j = 0; j <=9; j++){

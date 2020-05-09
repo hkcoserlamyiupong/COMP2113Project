@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdlib>
 using namespace std;
+//function for displacement
 void info::move(){
   cout<<"please enter coordinates of destination"<<endl;
   int xx = x;
