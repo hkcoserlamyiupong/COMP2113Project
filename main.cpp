@@ -6,6 +6,7 @@
 #include "drawcardwithdiamond.h"
 #include "play.h"
 #include "role.h"
+#include "stat.h"
 #include "map.h"
 using namespace std;
 int main(){
@@ -45,7 +46,6 @@ int main(){
       if (command=="drawcardwithdiamond"){
         if (diamond>=5){
           role[drawcardwithdiamond(diamond)].own=true;
-          break;
         }
         else {
           cout<<"not enough diamonds"<<endl;
@@ -55,7 +55,7 @@ int main(){
         int j = 0;
         for (int i = 0; i < 20; i++){
           if (role[i].own==true){
-            team[j]=role[i]
+            team[j]=role[i];
             j++;
           }
         }//team[i]where i belongs to{0,1,2,3,4}can be used to refer to roles for the game
