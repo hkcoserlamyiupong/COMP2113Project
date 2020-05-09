@@ -31,4 +31,4 @@ Code Requirement. Your implementation should encompass the following coding elem
   
   Program codes in multiple files:
   There will be header files to declare various functions separately. These header files will be #include<>d in the main .cpp program.
-  e.g. drawcardwithdiamond.h, displaymap.h, role.h, etc.
+  e.g. drawcardwithdiamond.h, displaymap.h, role.h, etc. There is a makefile so that each pair of .h and .cpp will be g++ to a .o and then all these .o will be linked to give a main.
