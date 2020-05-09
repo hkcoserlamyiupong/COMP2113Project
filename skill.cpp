@@ -9,15 +9,15 @@ void info::skill(info role[], monsterinfo monster[]){
   cout<<skillname<<endl;
   cd=maxcd;
   switch(number){
-    case 0:
+    case 0:{
       cout<<"travel within a displacement of 5 and attack enemies physically on the path"<<endl;
       cout<<"please enter coordinates of destination"<<endl;
-      int x1 = x;
-      int y1 = y;
+      int xx = x;
+      int yy = y;
       int * x1 = new int;
-      *x1 = x1;
+      *x1 = xx;
       int * y1 = new int;
-      *y1 = y1;
+      *y1 = yy;
       double distance;
       bool valid=false;
       while (valid==false){
@@ -50,14 +50,14 @@ void info::skill(info role[], monsterinfo monster[]){
           }
         }
       }
-      *x1=new int;
-      *y1=new int;
+      x1=new int;
+      y1=new int;
       delete x1;
       delete y1;
       x1=0;
       y1=0;
-      break;
-    case 1:
+    }break;
+    case 1:{
       cout<<"attack a single enemy 16 hits with dual blades"<<endl;
       string target;
       bool *valid=new bool(false);
@@ -88,8 +88,8 @@ void info::skill(info role[], monsterinfo monster[]){
       }
       delete valid;
       valid=0;
-      break;
-    case 2:
+    }break;
+    case 2:{
       cout<<"heal all your team members(roles) by up to 400 hp"<<endl;
       for (int i = 0; i < 10; i++){
         if (role[i].own==true){
@@ -101,7 +101,8 @@ void info::skill(info role[], monsterinfo monster[]){
           }
         }
       }
-    case 3:
+    }break;
+    case 3:{
       cout<<"slash every enemy within a distance of 3 at the stage with the katana and appear at the position of the enemy you slash"<<endl;
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true){
@@ -120,8 +121,8 @@ void info::skill(info role[], monsterinfo monster[]){
           distance=0;
         }
       }
-      break;
-    case 4:
+    }break;
+    case 4:{
       cout<<"launch an atomic bomb with massive damage to both sides"<<endl;
       cout<<"please enter coordinates of detonation of nuclear fission"<<endl;
       int * x0 = new int;
@@ -152,8 +153,8 @@ void info::skill(info role[], monsterinfo monster[]){
       delete y0;
       x0=0;
       y0=0;
-      break;
-    case 5:
+    }break;
+    case 5:{
       cout<<"hack to achieve an instant victory by changing the boolean death status of all enemies to true(this overrides the ability to revive of skeletons)"<<endl;
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true){
@@ -162,8 +163,8 @@ void info::skill(info role[], monsterinfo monster[]){
           monster[i].revive=false;
         }
       }
-      break;
-    case 6:
+    }break;
+    case 6:{
       cout<<"shoot an enemy with your sniper"<<endl;
       string target;
       bool *valid=new bool(false);
@@ -193,8 +194,8 @@ void info::skill(info role[], monsterinfo monster[]){
           }
         }
       }
-      break;
-    case 7:
+    }break;
+    case 7:{
       cout<<"set an exertal potential difference of 100kV across an enemy and skip the enemy 1 round"<<endl;
       string target;
       bool *valid=new bool(false);
@@ -225,8 +226,8 @@ void info::skill(info role[], monsterinfo monster[]){
           }
         }
       }
-      break;
-    case 8:
+    }break;
+    case 8:{
       cout<<"spread toxic chlorine gas(Haber wears a mask himself so he will not get poisoned)"<<endl;
       for (int i = 0; i < 5; i++){
         if (monster[i].present==true){
@@ -246,8 +247,8 @@ void info::skill(info role[], monsterinfo monster[]){
           distance=0;
         }
       }
-      break;
-    case 9:
+    }break;
+    case 9:{
       cout<<"fire the shotgun in a direction and damage enemies within pi/6 from normal"<<endl;
       cout<<"please enter coordinates where you aim your shotgun"<<endl;
       int * x0 = new int;
@@ -259,7 +260,7 @@ void info::skill(info role[], monsterinfo monster[]){
           double *distance = new double;
           double *distancefromnormal = new double;
           *distance=sqrt((x-monster[i].x)*(x-monster[i].x)+(y-monster[i].y)*(y-monster[i].y));//
-          distancefromnormal=abs((y-(*y0))*monster[i].x+(*x0-x)*monster[i].y-(*x0)*y+x*(*y0))/sqrt((y-(*y0))*(y-(*y0))+(*x0-x)*(*x0-x));
+          *distancefromnormal=abs((y-(*y0))*monster[i].x+(*x0-x)*monster[i].y-(*x0)*y+x*(*y0))/sqrt((y-(*y0))*(y-(*y0))+(*x0-x)*(*x0-x));
           if ((*distancefromnormal)/(*distance)<=0.5){
             monster[i].hp-=500/((*distance)*(*distance))+monster[i].md;
           }
@@ -269,6 +270,6 @@ void info::skill(info role[], monsterinfo monster[]){
           distancefromnormal=0;
         }
       }
-      break;
+    }break;
   }
 }

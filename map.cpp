@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <fstream>
 using namespace std;
-void map(info team[], monsterinfo monster[], string m[][], int map){
+void mapmap(info team[], monsterinfo monster[], string m[][10], int map){
   srand(time(NULL));
   for (int j = 0; j <=9; j++){
     for (int i = 0;i <= 4; i++){

@@ -4,5 +4,5 @@
 #define MAP
 #include "role.h"
 using namespace std;
-void map(info[], monsterinfo[],string [][10], int);
+void mapmap(info[], monsterinfo[],string [][10], int);
 #endif

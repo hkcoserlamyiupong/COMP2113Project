@@ -7,12 +7,12 @@
 using namespace std;
 void info::move(){
   cout<<"please enter coordinates of destination"<<endl;
-  int x1 = x;
-  int y1 = y;
+  int xx = x;
+  int yy = y;
   int * x1 = new int;
-  *x1 = x1;
+  *x1 = xx;
   int * y1 = new int;
-  *y1 = y1;
+  *y1 = yy;
   bool valid=false;
   while (valid==false){
     cin>>x;
@@ -31,8 +31,8 @@ void info::move(){
       cout<<"out of range, please enter again"<<endl;
     }
   }
-  *x1=new int;
-  *y1=new int;
+  x1=new int;
+  y1=new int;
   delete x1;
   delete y1;
   x1=0;

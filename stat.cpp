@@ -17,7 +17,7 @@ void stat(info team[], monsterinfo monster[], int t){
     }
     else {
       cout<<"skill "<<team[i].skillname;
-      if (team[i].cd<==0){
+      if (team[i].cd<=0){
         cout<<" ready";
       }
       cout<<" cd:"<<team[i].cd<<"/"<<team[i].maxcd<<" hp:"<<team[i].hp<<"/"<<team[i].maxhp<<" position:("<<team[i].x<<","<<team[i].y<<")"<<" radiation:"<<team[i].radiation;
