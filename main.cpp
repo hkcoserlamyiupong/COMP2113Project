@@ -68,7 +68,7 @@ int main(){
           int stage=1;//a variable indicating the level of the game//
           play(team, monster, stage, role);
         }
-      }elseif (command==""minigame) {
+      }else if (command==""minigame) {
         minigame();
       }
       else if (command=="quit"){
