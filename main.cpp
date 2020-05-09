@@ -8,6 +8,7 @@
 #include "role.h"
 #include "stat.h"
 #include "map.h"
+#include "minigame.h"
 using namespace std;
 int main(){
   int diamond=25;
@@ -42,7 +43,7 @@ int main(){
   fin.close();
   string command;
   while (command!="quit"){
-    cout<<"please enter a command(drawcardwithdiamond, play or quit)"<<endl;
+    cout<<"please enter a command(drawcardwithdiamond, play ,minigame or quit)"<<endl;
     cin>>command;//user type a command//
       if (command=="drawcardwithdiamond"){
         if (diamond>=5){
@@ -67,6 +68,8 @@ int main(){
           int stage=1;//a variable indicating the level of the game//
           play(team, monster, stage, role);
         }
+      }elseif (command==""minigame) {
+        minigame();
       }
       else if (command=="quit"){
         break;
