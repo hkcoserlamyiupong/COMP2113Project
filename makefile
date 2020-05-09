@@ -1,17 +1,18 @@
 #makefile
+FLAGS = -pedantic-errors -std=c++11
 drawcardwithdiamond.o: drawcardwithdiamond.cpp drawcardwithdiamond.h
-	g++ -pedantic-errors -std=c++11 drawcardwithdiamond.cpp
+	g++ $(FLAGS) -c $<
 move.o: move.cpp role.h
-	g++ -pedantic-errors -std=c++11 move.cpp
+	g++ $(FLAGS) -c $<
 skill.o: skill.cpp role.h
-	g++ -pedantic-errors -std=c++11 skill.cpp
+	g++ $(FLAGS) -c $<
 map.o: map.cpp map.h role.h
-	g++ -pedantic-errors -std=c++11 map.cpp
+	g++ $(FLAGS) -c $<
 stat.o: stat.cpp stat.h role.h
-	g++ -pedantic-errors -std=c++11 stat.cpp
+	g++ $(FLAGS) -c $<
 play.o: play.cpp play.h map.h stat.h role.h
-	g++ -pedantic-errors -std=c++11 play.cpp
+	g++ $(FLAGS) -c $<
 main.o: main.cpp drawcardwithdiamond.h play.h role.h map.h stat.h
-	g++ -pedantic-errors -std=c++11 $<
+	g++ $(FLAGS) -c $<
 main: drawcardwithdiamond.o move.o skill.o map.o stat.o play.o main.o
-	g++ $^ -o $@
+	g++ $(FLAGS) $^ -o $@
