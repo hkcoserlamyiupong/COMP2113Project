@@ -42,6 +42,7 @@ int main(){
   fin.close();
   string command;
   while (command!="quit"){
+    cout<<"please enter a command(drawcardwithdiamond, play or quit)"<<endl;
     cin>>command;//user type a command//
       if (command=="drawcardwithdiamond"){
         if (diamond>=5){
@@ -51,17 +52,23 @@ int main(){
           cout<<"not enough diamonds"<<endl;
         }
       }else if (command=="play"){
-        info team[5];//team is an array of roles drawn to be summoned for the game and the maximum roles that can be drawn is 5//
-        int j = 0;
-        for (int i = 0; i < 20; i++){
-          if (role[i].own==true){
-            team[j]=role[i];
-            j++;
-          }
-        }//team[i]where i belongs to{0,1,2,3,4}can be used to refer to roles for the game
-        int stage=1;//a variable indicating the level of the game//
-        play(team, monster, stage, role);
-      }else if (command=="quit"){
+        if (diamond==25){
+          cout<<"please summon roles by drawcardwithdiamond first"<<endl;
+        }
+        else {
+          info team[5];//team is an array of roles drawn to be summoned for the game and the maximum roles that can be drawn is 5//
+          int j = 0;
+          for (int i = 0; i < 20; i++){
+            if (role[i].own==true){
+              team[j]=role[i];
+              j++;
+            }
+          }//team[i]where i belongs to{0,1,2,3,4}can be used to refer to roles for the game
+          int stage=1;//a variable indicating the level of the game//
+          play(team, monster, stage, role);
+        }
+      }
+      else if (command=="quit"){
         break;
       }else{
           cout<<"invalid input"<<endl;
