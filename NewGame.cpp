@@ -18,10 +18,10 @@ void NewGame(champ &hero, champ &monster, int &level, int &k){
     monster.hp=70;
     level=1;
     k=3;
-    ifstream fin("/Users/hubertfu/Desktop/1340/New PJ/New PJ/ministat.txt");
+    ifstream fin("ministat.txt");
     fin>>temp>>temp>>temp>>temp>>temp>>temp>>temp;
     fin.close();
-    ofstream fout("/Users/hubertfu/Desktop/1340/New PJ/New PJ/ministat.txt");
+    ofstream fout("ministat.txt");
     fout<<"30 200\n"<<"2 70\n"<<"1 3\n"<<temp;
     fout.close();
 }

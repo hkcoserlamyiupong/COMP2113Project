@@ -49,13 +49,13 @@ void minigame() {
                 
             case 3:
             {
-                ofstream add("/Users/hubertfu/Desktop/1340/New PJ/New PJ/command.txt",std::fstream::in | std::fstream::out | std::fstream::app);
+                ofstream add("command.txt",std::fstream::in | std::fstream::out | std::fstream::app);
                 string spell;
                 cout<<"Input the spell: ";
                 cin>>spell;
                 add<<spell<<"\n";
                 Ncommand++;
-                ofstream fout2("/Users/hubertfu/Desktop/1340/New PJ/New PJ/ministat.txt");
+                ofstream fout2("ministat.txt");
                 fout2<<hero.att<<" "<<hero.hp<<"\n"<<monster.att<<" "<<monster.hp<<"\n"<<level<<" "<<k<<"\n"<<Ncommand;
                 fout2.close();
                 cout<<spell<<" has been added to spells"<<endl<<endl;
