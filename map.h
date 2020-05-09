@@ -1,7 +1,8 @@
 //map.h
 #include <string>
-#ifndef map
-#define map
+#ifndef MAP
+#define MAP
+#include "role.h"
 using namespace std;
-void map(info[], monsterinfo[],string [][], int);
+void map(info[], monsterinfo[],string [][10], int);
 #endif

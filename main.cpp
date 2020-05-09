@@ -11,7 +11,7 @@
 using namespace std;
 int main(){
   int diamond=25;
-  struct info role[20];
+  info role[20];
   ifstream fin("roleinfo.txt");
   monsterinfo monster[5];
   //to intialize role stats//
@@ -60,7 +60,7 @@ int main(){
           }
         }//team[i]where i belongs to{0,1,2,3,4}can be used to refer to roles for the game
         int stage=1;//a variable indicating the level of the game//
-        void play(team, monster, stage, role);
+        play(team, monster, stage, role);
       }else if (command=="quit"){
         break;
       }else{
