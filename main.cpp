@@ -8,6 +8,7 @@
 #include "role.h"
 #include "stat.h"
 #include "map.h"
+#include "minigame.h"
 using namespace std;
 int main(){
   int diamond=25;
@@ -42,7 +43,7 @@ int main(){
   fin.close();
   string command;
   while (command!="quit"){
-    cout<<"please enter a command(drawcardwithdiamond, play or quit)"<<endl;
+    cout<<"please enter a command(drawcardwithdiamond, play ,minigame or quit)"<<endl;
     cin>>command;//user type a command//
       if (command=="drawcardwithdiamond"){
         if (diamond>=5){
@@ -52,8 +53,8 @@ int main(){
           cout<<"not enough diamonds"<<endl;
         }
       }else if (command=="play"){
-        if (diamond>0){
-          cout<<"please summon 5 roles by drawcardwithdiamond first"<<endl;
+        if (diamond==25){
+          cout<<"please summon roles by drawcardwithdiamond first"<<endl;
         }
         else {
           info team[5];//team is an array of roles drawn to be summoned for the game and the maximum roles that can be drawn is 5//
@@ -67,6 +68,8 @@ int main(){
           int stage=1;//a variable indicating the level of the game//
           play(team, monster, stage, role);
         }
+      }else if (command=="minigame") {
+        minigame();
       }
       else if (command=="quit"){
         break;

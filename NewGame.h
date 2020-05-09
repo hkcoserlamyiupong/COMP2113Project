@@ -6,8 +6,8 @@
 //  Copyright © 2020 Fu Wing Ho. All rights reserved.
 //
 
-#ifndef NewGame_h
-#define NewGame_h
+#ifndef NEWGAME
+#define NEWGAME
 #include "champ.h"
 //#include <stdio.h>
 

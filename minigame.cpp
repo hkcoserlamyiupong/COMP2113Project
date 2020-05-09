@@ -16,12 +16,12 @@ void minigame() {
     champ monster;
     cout<<"Monsters are distroying the world"<<endl<<"Fight with it by magic"<<endl<<"Type the suitable magic spells to attack it"<<endl<<"The Longer you spend, the larger damage it deals to You"<<endl<<"The monsters you face will be stronger by the time"<<endl<<"Survive as long as you can! Good luck"<<endl<<endl;
     while (true){
-        ifstream fin1("/Users/hubertfu/Desktop/1340/New PJ/New PJ/ministat.txt");
+        ifstream fin1("ministat.txt");
         fin1>>hero.att>>hero.hp>>monster.att>>monster.hp>>level>>k>>Ncommand;
         //cout<<monster.hp<<endl;
         //cout<<hero.att<<" "<<hero.hp<<" "<<monster.att<<" "<<hero.hp<<endl<<endl;
         fin1.close();
-        ifstream fin2("/Users/hubertfu/Desktop/1340/New PJ/New PJ/command.txt");
+        ifstream fin2("command.txt");
         string *command=new string [Ncommand];
         for (int i=0;i<Ncommand;i++){
             fin2>>command[i];
@@ -46,7 +46,7 @@ void minigame() {
                 NewGame(hero,monster,level,k);
                 playmini(hero,monster,maxhp,command,level,k,Ncommand);
                 break;
-                
+
             case 3:
             {
                 ofstream add("command.txt",std::fstream::in | std::fstream::out | std::fstream::app);
@@ -71,17 +71,17 @@ void minigame() {
             }
             case 5:
             {
-                ofstream save("/Users/hubertfu/Desktop/1340/New PJ/New PJ/ministat.txt");
+                ofstream save("ministat.txt");
                 save<<hero.att<<" "<<hero.hp<<"\n"<<monster.att<<" "<<monster.hp<<"\n"<<level<<" "<<k<<"\n"<<Ncommand;
                 delete [] command;
                 return;
                 break;
             }
-                
+
             default:
                 cout<<"Invalid Input!"<<endl<<endl;
                 break;
         }
-        
+
     }
 }

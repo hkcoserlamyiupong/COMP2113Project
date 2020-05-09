@@ -6,8 +6,8 @@
 //  Copyright © 2020 Fu Wing Ho. All rights reserved.
 //
 
-#ifndef champ_h
-#define champ_h
+#ifndef CHAMP
+#define CHAMP
 struct champ{
     int att;
     int hp;

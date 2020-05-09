@@ -1,7 +1,7 @@
 
 
-#ifndef minigame_h
-#define minigame_h
+#ifndef MINIGAME
+#define MINIGAME
 
 void minigame();
 

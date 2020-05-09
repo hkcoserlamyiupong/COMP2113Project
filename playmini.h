@@ -6,8 +6,8 @@
 //  Copyright © 2020 Fu Wing Ho. All rights reserved.
 //
 
-#ifndef play_h
-#define play_h
+#ifndef PLAYMININI
+#define PLAYMININI
 #include "champ.h"
 #include <iostream>
 using namespace std;
