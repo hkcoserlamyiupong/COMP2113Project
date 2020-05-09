@@ -229,50 +229,64 @@ void play(info team[], monsterinfo monster[], int& stage, info role[]){
       }
     }
     cout<<"Please enter command('skill' or 'move'?)"<<endl;
-    cin>>command;
-    if (command=="skill"){
-      cout<<"Please enter your alive team member role(from 0 to 4) to use skill"<<endl;
-      int k;
-      bool valid=false;
-      while (valid==false){
-        cin>>k;
-        if (k>=0&&k<=4){
-          if (team[k].dead==false){
-            if (team[k].cd==0){
-              team[k].skill(role, monster);
-              valid=true;
-            }
-            else {
-              cout<<"cooldown time left="<<team[k].cd<<", please enter again"<<endl;
-            }
-          }
-          else {
-            cout<<"team member dead, please enter again"<<endl;
-          }
-        }
-        else {
-          cout<<"invalid input, please enter again"<<endl;
-        }
-      }
-    }
-    else if (command=="move"){
-      cout<<"Please enter your alive team member role(from 0 to 4) to move"<<endl;
-      int k;
-      bool valid=false;
-      while (valid==false){
-        cin>>k;
-        if (k>=0&&k<=4){
-          if (team[k].dead==false){
-            team[k].move();
+    bool v=false;
+    while (v==false){
+      cin>>command;
+      if (command=="skill"){
+        cout<<"Please enter your alive team member role(from 0 to 4) to use skill, enter 5 to go back"<<endl;
+        int k;
+        bool valid=false;
+        while (valid==false){
+          cin>>k;
+          if (k==5){
             valid=true;
           }
+          else if (k>=0&&k<=4){
+            if (team[k].dead==false){
+              if (team[k].cd==0){
+                team[k].skill(role, monster);
+                valid=true;
+                v=true;
+              }
+              else {
+                cout<<"cooldown time left="<<team[k].cd<<", please enter again"<<endl;
+              }
+            }
+            else {
+              cout<<"team member dead, please enter again"<<endl;
+            }
+          }
           else {
-            cout<<"team member dead, please enter again"<<endl;
+            cout<<"invalid input, please enter again"<<endl;
           }
         }
-        else {
-          cout<<"invalid input, please enter again"<<endl;
+      }
+      else if (command=="move"){
+        cout<<"Please enter your alive team member role(from 0 to 4) to move, enter 5 to go back"<<endl;
+        int k;
+        bool valid=false;
+        while (valid==false){
+          cin>>k;
+          if (k==5){
+            valid=true;
+          }
+          else if (k>=0&&k<=4){
+            if (team[k].dead==false){
+              team[k].move();
+              valid=true;
+              v=true;
+            }
+            else {
+              cout<<"team member dead, please enter again"<<endl;
+            }
+          }
+          else {
+            cout<<"invalid input, please enter again"<<endl;
+          }
         }
+      }
+      else {
+        cout<<"invalid input, please enter again"<<endl;
       }
     }
     //monsters' turn
